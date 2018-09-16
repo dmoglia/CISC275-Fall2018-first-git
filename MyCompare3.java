@@ -1,11 +1,26 @@
-# CISC275-Fall2018-first-git
-1. Create java files to make this code compile and run.
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
-2. What five objects are created in the main?
+public class MyCompare3 {
+	
+	public static void main(String[] args){
+		
+		List<Dog> dogs = new ArrayList<Dog>();
+		dogs.add(new Dog("Fido", 4));
+		dogs.add(new Dog("Fido", 3));
+		dogs.add(new Dog("Alfie", 4));
 
-the five objects created are dog 1-fido, dog 2-fido, dog3-alfie, the arraylist dogs, and the comparator  
-
-
-3. Can you spot the comparator constructor call? Where is the class definition for the comparator?
-the comparator constructor call is within collections.sort. The class definition for the comparator is within
-the imported Java.util.Comparator
+		System.out.println(dogs);
+		Collections.sort(dogs, new Comparator<Animal>(){
+			@Override
+			public int compare(Animal a, Animal b){
+			    return a.getLegs() - b.getLegs();
+			}
+		});
+		System.out.println(dogs);
+		Collections.sort(dogs);
+		System.out.println(dogs);
+	}
+}
